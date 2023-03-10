@@ -5,13 +5,13 @@ import json
 import csv
 
 url = "https://api.github.com/graphql"
-token = "Token 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"
+token = "Bearer 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"
 today = date.utcnow()
 variables = {"after": None}
 
 query = """
 query ($after: String) {
-  search(query: "stars:>100 language:JAVA" type: REPOSITORY first: 20 after: $after) {
+  search(query: "stars:>100 language:Java" type: REPOSITORY first: 20 after: $after) {
     pageInfo { endCursor }
     nodes {
       ... on Repository {
