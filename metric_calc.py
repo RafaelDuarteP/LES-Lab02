@@ -29,13 +29,6 @@ def onerror(func, path, exc_info):
         raise
 
 
-def delete_paths():
-    if os.path.exists(r'output-metrics'):
-        shutil.rmtree(r'output-metrics', onerror=onerror)
-    if os.path.exists(r'repo'):
-        shutil.rmtree(r'repo', onerror=onerror)
-
-
 ck = 'java -jar ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar repo false 0 false output-metrics\\'
 
 # Mudar para dados-repo-1.csv ou  dados-repo-2.csv
@@ -46,7 +39,11 @@ df = pd.read_csv(csv)
 if 'visited' not in df.columns:
     df['visited'] = False
 
-delete_paths()
+# verifica se existem as pastas de repo e output e deleta
+if os.path.exists(r'output-metrics'):
+    shutil.rmtree(r'output-metrics', onerror=onerror)
+if os.path.exists(r'repo'):
+    shutil.rmtree(r'repo', onerror=onerror)
 
 # itera sobre os repositórios do csv
 for i, row in df.iterrows():
@@ -66,9 +63,10 @@ for i, row in df.iterrows():
             df.loc[i, 'visited'] = True
         except Exception as e:
             print('Erro no', row['repository'], 'Exception', str(e))
-        finally:
-            delete_paths()
-            df.to_csv(csv, index=False)  # salva os dados
+        # deleta as pastas
+        shutil.rmtree(r'repo', onerror=onerror)
+        shutil.rmtree(r'output-metrics', onerror=onerror)
+        df.to_csv(csv, index=False)  # salva os dados
         print('salvou', i)
 
 df.to_csv(csv, index=False)  # salva novamente os dados
