@@ -5,7 +5,7 @@ import json
 import csv
 
 url = "https://api.github.com/graphql"
-token = "Bearer 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"
+token = "Bearer _token_"
 today = date.utcnow()
 variables = {"after": None}
 
@@ -43,14 +43,17 @@ for i in range(50):
         data.append({
             'repository': repo['nameWithOwner'],
             'url': repo['url'],
-            'createdAt': created_at,
             'age': int((today - created_at).days / 365),
             'releases': repo['releases']['totalCount'],
             'stars': repo['stargazerCount'],
+            'loc': 0,
+            'cbo': 0,
+            'dit': 0,
+            'lcom': 0,
         })
 
 df = pd.DataFrame(data=data)
 
-df.to_csv('dados-repo.csv', index=True)
+df.to_csv('dados-repo.csv', index=False)
 
 print("fim")
