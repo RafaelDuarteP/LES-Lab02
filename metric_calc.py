@@ -29,6 +29,13 @@ def onerror(func, path, exc_info):
         raise
 
 
+def delete_paths():
+    if os.path.exists(r'output-metrics'):
+        shutil.rmtree(r'output-metrics', onerror=onerror)
+    if os.path.exists(r'repo'):
+        shutil.rmtree(r'repo', onerror=onerror)
+
+
 ck = 'java -jar ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar repo false 0 false output-metrics\\'
 
 # Mudar para dados-repo-1.csv ou  dados-repo-2.csv
@@ -39,21 +46,17 @@ df = pd.read_csv(csv)
 if 'visited' not in df.columns:
     df['visited'] = False
 
-# verifica se existem as pastas de repo e output e deleta
-if os.path.exists(r'output-metrics'):
-    shutil.rmtree(r'output-metrics', onerror=onerror)
-if os.path.exists(r'repo'):
-    shutil.rmtree(r'repo', onerror=onerror)
+delete_paths()
 
 # itera sobre os repositórios do csv
 for i, row in df.iterrows():
     if not row['visited']:  # verifica se já foi calculado
         print('começou', i)
-        # cria a pasta de output e clona o repositório
-        os.makedirs('./output-metrics')
-        Repo.clone_from(row['url'], 'repo/', progress=CloneProgress())
-        # calcula as métricas
         try:
+            # cria a pasta de output e clona o repositório
+            os.makedirs('./output-metrics')
+            Repo.clone_from(row['url'], 'repo/', progress=CloneProgress())
+            # calcula as métricas
             os.system(ck)
             metrics = pd.read_csv('output-metrics/class.csv')
             df.loc[i, 'loc'] = metrics['loc'].sum()
@@ -61,12 +64,11 @@ for i, row in df.iterrows():
             df.loc[i, 'dit'] = metrics['dit'].median()
             df.loc[i, 'lcom'] = metrics['lcom'].median()
             df.loc[i, 'visited'] = True
-        except:
-            print('Erro no', row['repository'])
-        # deleta as pastas
-        shutil.rmtree(r'repo', onerror=onerror)
-        shutil.rmtree(r'output-metrics', onerror=onerror)
-        df.to_csv(csv, index=False)  # salva os dados
+        except Exception as e:
+            print('Erro no', row['repository'], 'Exception', str(e))
+        finally:
+            delete_paths()
+            df.to_csv(csv, index=False)  # salva os dados
         print('salvou', i)
 
 df.to_csv(csv, index=False)  # salva novamente os dados
