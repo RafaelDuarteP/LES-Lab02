@@ -4,6 +4,7 @@ import os
 import shutil
 
 
+# correção de erros para deletar pastas
 def onerror(func, path, exc_info):
     """
     Error handler for ``shutil.rmtree``.
@@ -26,16 +27,26 @@ def onerror(func, path, exc_info):
 
 ck = 'java -jar ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar repo false 0 false output-metrics\\'
 
+# Mudar para dados-repo-1.csv ou  dados-repo-2.csv
 df = pd.read_csv('dados-repo.csv')
 
+# Verifica se tem o dado visited no csv, se não tiver cria com valor false
 if 'visited' not in df.columns:
     df['visited'] = False
 
-for i in range(5):
-    row = df.loc[i]
-    if not row['visited']:
+# verifica se existem as pastas de repo e output e deleta
+if os.path.exists(r'output-metrics'):
+    shutil.rmtree(r'output-metrics', onerror=onerror)
+if os.path.exists(r'repo'):
+    shutil.rmtree(r'repo', onerror=onerror)
+
+# itera sobre os repositórios do csv
+for i, row in df.iterrows():
+    if not row['visited']:  # verifica se já foi calculado
+        # cria a pasta de output e clona o repositório
         os.makedirs('./output-metrics')
         Repo.clone_from(row['url'], 'repo/')
+        # calcula as métricas
         os.system(ck)
         metrics = pd.read_csv('output-metrics/class.csv')
         df.loc[i, 'loc'] = metrics['loc'].sum()
@@ -43,10 +54,11 @@ for i in range(5):
         df.loc[i, 'dit'] = metrics['dit'].median()
         df.loc[i, 'lcom'] = metrics['lcom'].median()
         df.loc[i, 'visited'] = True
+        # deleta as pastas
         shutil.rmtree(r'repo', onerror=onerror)
         shutil.rmtree(r'output-metrics', onerror=onerror)
-        df.to_csv('dados-repo.csv', index=False)
+        df.to_csv('dados-repo.csv', index=False)  # salva os dados
 
-df.to_csv('dados-repo.csv', index=False)
+df.to_csv('dados-repo.csv', index=False)  # salva novamente os dados
 
 print('fim')
