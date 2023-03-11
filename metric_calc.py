@@ -28,7 +28,8 @@ def onerror(func, path, exc_info):
 ck = 'java -jar ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar repo false 0 false output-metrics\\'
 
 # Mudar para dados-repo-1.csv ou  dados-repo-2.csv
-df = pd.read_csv('dados-repo.csv')
+csv = 'dados-repo.csv'
+df = pd.read_csv(csv)
 
 # Verifica se tem o dado visited no csv, se não tiver cria com valor false
 if 'visited' not in df.columns:
@@ -57,8 +58,8 @@ for i, row in df.iterrows():
         # deleta as pastas
         shutil.rmtree(r'repo', onerror=onerror)
         shutil.rmtree(r'output-metrics', onerror=onerror)
-        df.to_csv('dados-repo.csv', index=False)  # salva os dados
+        df.to_csv(csv, index=False)  # salva os dados
 
-df.to_csv('dados-repo.csv', index=False)  # salva novamente os dados
+df.to_csv(csv, index=False)  # salva novamente os dados
 
 print('fim')
