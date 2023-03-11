@@ -2,20 +2,24 @@ import pandas as pd
 from git import Repo
 import os
 import shutil
+from git import RemoteProgress
+from tqdm import tqdm
+
+
+class CloneProgress(RemoteProgress):
+
+    def __init__(self):
+        super().__init__()
+        self.pbar = tqdm()
+
+    def update(self, op_code, cur_count, max_count=None, message=''):
+        self.pbar.total = max_count
+        self.pbar.n = cur_count
+        self.pbar.refresh()
 
 
 # correção de erros para deletar pastas
 def onerror(func, path, exc_info):
-    """
-    Error handler for ``shutil.rmtree``.
-
-    If the error is due to an access error (read only file)
-    it attempts to add write permission and then retries.
-
-    If the error is for another reason it re-raises the error.
-    
-    Usage : ``shutil.rmtree(path, onerror=onerror)``
-    """
     import stat
     # Is the error an access error?
     if not os.access(path, os.W_OK):
@@ -28,7 +32,7 @@ def onerror(func, path, exc_info):
 ck = 'java -jar ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar repo false 0 false output-metrics\\'
 
 # Mudar para dados-repo-1.csv ou  dados-repo-2.csv
-csv = 'dados-repo.csv'
+csv = 'dados-repo-1.csv'
 df = pd.read_csv(csv)
 
 # Verifica se tem o dado visited no csv, se não tiver cria com valor false
@@ -44,9 +48,10 @@ if os.path.exists(r'repo'):
 # itera sobre os repositórios do csv
 for i, row in df.iterrows():
     if not row['visited']:  # verifica se já foi calculado
+        print('começou', i)
         # cria a pasta de output e clona o repositório
         os.makedirs('./output-metrics')
-        Repo.clone_from(row['url'], 'repo/')
+        Repo.clone_from(row['url'], 'repo/', progress=CloneProgress())
         # calcula as métricas
         os.system(ck)
         metrics = pd.read_csv('output-metrics/class.csv')
@@ -54,11 +59,12 @@ for i, row in df.iterrows():
         df.loc[i, 'cbo'] = metrics['cbo'].median()
         df.loc[i, 'dit'] = metrics['dit'].median()
         df.loc[i, 'lcom'] = metrics['lcom'].median()
-        df.loc[i, 'visited'] = True
         # deleta as pastas
         shutil.rmtree(r'repo', onerror=onerror)
         shutil.rmtree(r'output-metrics', onerror=onerror)
+        df.loc[i, 'visited'] = True
         df.to_csv(csv, index=False)  # salva os dados
+        print('salvou', i)
 
 df.to_csv(csv, index=False)  # salva novamente os dados
 
