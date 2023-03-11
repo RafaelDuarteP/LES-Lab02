@@ -53,16 +53,19 @@ for i, row in df.iterrows():
         os.makedirs('./output-metrics')
         Repo.clone_from(row['url'], 'repo/', progress=CloneProgress())
         # calcula as métricas
-        os.system(ck)
-        metrics = pd.read_csv('output-metrics/class.csv')
-        df.loc[i, 'loc'] = metrics['loc'].sum()
-        df.loc[i, 'cbo'] = metrics['cbo'].median()
-        df.loc[i, 'dit'] = metrics['dit'].median()
-        df.loc[i, 'lcom'] = metrics['lcom'].median()
+        try:
+            os.system(ck)
+            metrics = pd.read_csv('output-metrics/class.csv')
+            df.loc[i, 'loc'] = metrics['loc'].sum()
+            df.loc[i, 'cbo'] = metrics['cbo'].median()
+            df.loc[i, 'dit'] = metrics['dit'].median()
+            df.loc[i, 'lcom'] = metrics['lcom'].median()
+            df.loc[i, 'visited'] = True
+        except:
+            print('Erro no', row['repository'])
         # deleta as pastas
         shutil.rmtree(r'repo', onerror=onerror)
         shutil.rmtree(r'output-metrics', onerror=onerror)
-        df.loc[i, 'visited'] = True
         df.to_csv(csv, index=False)  # salva os dados
         print('salvou', i)
 
