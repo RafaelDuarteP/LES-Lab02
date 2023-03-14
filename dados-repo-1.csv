@@ -1,8 +1,8 @@
 repository,url,age,releases,stars,loc,cbo,dit,lcom,visited
-Snailclimb/JavaGuide,https://github.com/Snailclimb/JavaGuide,4,0,131757,0,,,,True
+Snailclimb/JavaGuide,https://github.com/Snailclimb/JavaGuide,4,0,131757,0,,,,False
 iluwatar/java-design-patterns,https://github.com/iluwatar/java-design-patterns,8,0,80199,32513,3.0,6.0,0.0,True
 MisterBooo/LeetCodeAnimation,https://github.com/MisterBooo/LeetCodeAnimation,4,0,72472,69,1.0,1.0,0.0,True
-doocs/advanced-java,https://github.com/doocs/advanced-java,4,1,69010,0,,,,True
+doocs/advanced-java,https://github.com/doocs/advanced-java,4,1,69010,0,,,,False
 spring-projects/spring-boot,https://github.com/spring-projects/spring-boot,10,163,66035,311759,4.0,13.0,0.0,True
 macrozheng/mall,https://github.com/macrozheng/mall,4,2,64043,100638,3.0,4.0,13.0,True
 elastic/elasticsearch,https://github.com/elastic/elasticsearch,13,108,62982,1910283,5.0,176.0,1.0,True
@@ -45,7 +45,7 @@ alibaba/canal,https://github.com/alibaba/canal,10,26,25190,107662,4.0,13.0,1.0,T
 wuyouzhuguli/SpringAll,https://github.com/wuyouzhuguli/SpringAll,4,0,25161,5912,4.0,4.0,0.0,True
 proxyee-down-org/proxyee-down,https://github.com/proxyee-down-org/proxyee-down,5,49,25107,3392,4.0,5.0,2.0,True
 alibaba/spring-cloud-alibaba,https://github.com/alibaba/spring-cloud-alibaba,5,32,24963,15256,5.0,4.0,0.0,True
-hollischuang/toBeTopJavaer,https://github.com/hollischuang/toBeTopJavaer,4,0,24433,0,,,,True
+hollischuang/toBeTopJavaer,https://github.com/hollischuang/toBeTopJavaer,4,0,24433,0,,,,False
 apache/kafka,https://github.com/apache/kafka,11,0,24366,430530,4.0,17.0,0.0,True
 greenrobot/EventBus,https://github.com/greenrobot/EventBus,10,7,24275,5269,3.0,12.0,0.0,True
 scwang90/SmartRefreshLayout,https://github.com/scwang90/SmartRefreshLayout,5,10,24097,19480,3.0,6.0,0.0,True
@@ -152,7 +152,7 @@ Netflix/eureka,https://github.com/Netflix/eureka,10,146,11730,32744,4.0,9.0,0.0,
 Tencent/VasSonic,https://github.com/Tencent/VasSonic,5,10,11632,7421,2.0,4.0,0.0,True
 pagehelper/Mybatis-PageHelper,https://github.com/pagehelper/Mybatis-PageHelper,8,11,11578,7108,6.0,5.0,0.0,True
 codecentric/spring-boot-admin,https://github.com/codecentric/spring-boot-admin,8,99,11561,13295,6.0,5.0,0.0,True
-doocs/source-code-hunter,https://github.com/doocs/source-code-hunter,3,0,11492,0,,,,True
+doocs/source-code-hunter,https://github.com/doocs/source-code-hunter,3,0,11492,0,,,,False
 quarkusio/quarkus,https://github.com/quarkusio/quarkus,4,221,11470,641973,4.0,16.0,0.0,True
 Yalantis/uCrop,https://github.com/Yalantis/uCrop,7,15,11451,4643,3.0,7.0,1.0,True
 realm/realm-java,https://github.com/realm/realm-java,10,0,11363,109774,2.0,16.0,0.0,True
@@ -161,7 +161,7 @@ androidannotations/androidannotations,https://github.com/androidannotations/andr
 jfeinstein10/SlidingMenu,https://github.com/jfeinstein10/SlidingMenu,10,0,11132,3085,3.0,5.0,0.0,True
 apache/zookeeper,https://github.com/apache/zookeeper,13,0,11121,117032,3.0,96.0,0.0,True
 permissions-dispatcher/PermissionsDispatcher,https://github.com/permissions-dispatcher/PermissionsDispatcher,7,40,11100,3184,0.0,4.0,3.0,True
-frank-lam/fullstack-tutorial,https://github.com/frank-lam/fullstack-tutorial,4,0,11023,0,,,,True
+frank-lam/fullstack-tutorial,https://github.com/frank-lam/fullstack-tutorial,4,0,11023,0,,,,False
 janishar/mit-deep-learning-book-pdf,https://github.com/janishar/mit-deep-learning-book-pdf,5,3,10977,2,0.0,1.0,0.0,True
 kunal-kushwaha/DSA-Bootcamp-Java,https://github.com/kunal-kushwaha/DSA-Bootcamp-Java,1,0,10967,5161,1.0,3.0,1.0,True
 redis/jedis,https://github.com/redis/jedis,12,74,10953,60953,3.0,7.0,1.0,True
@@ -182,7 +182,7 @@ lipangit/JiaoZiVideoPlayer,https://github.com/lipangit/JiaoZiVideoPlayer,7,78,10
 tbruyelle/RxPermissions,https://github.com/tbruyelle/RxPermissions,7,11,10426,876,2.0,2.0,0.0,True
 grpc/grpc-java,https://github.com/grpc/grpc-java,8,137,10406,223421,3.0,22.0,0.0,True
 daniulive/SmarterStreaming,https://github.com/daniulive/SmarterStreaming,6,0,10399,10670,2.0,2.0,0.0,True
-chefyuan/algorithm-base,https://github.com/chefyuan/algorithm-base,1,0,10351,0,,,,True
+chefyuan/algorithm-base,https://github.com/chefyuan/algorithm-base,1,0,10351,0,,,,False
 aosp-mirror/platform_frameworks_base,https://github.com/aosp-mirror/platform_frameworks_base,14,0,10339,0,0.0,0.0,0.0,False
 YunaiV/ruoyi-vue-pro,https://github.com/YunaiV/ruoyi-vue-pro,2,16,10260,40359,5.0,4.0,0.0,True
 questdb/questdb,https://github.com/questdb/questdb,8,62,10226,0,0.0,0.0,0.0,False
@@ -205,7 +205,7 @@ googlesamples/easypermissions,https://github.com/googlesamples/easypermissions,7
 liaohuqiu/android-Ultra-Pull-To-Refresh,https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh,8,8,9623,5476,2.0,5.0,0.0,True
 yuliskov/SmartTubeNext,https://github.com/yuliskov/SmartTubeNext,2,122,9623,167739,5.0,49.0,1.0,True
 TooTallNate/Java-WebSocket,https://github.com/TooTallNate/Java-WebSocket,13,14,9619,14502,2.0,7.0,3.5,True
-react-native-camera/react-native-camera,https://github.com/react-native-camera/react-native-camera,7,144,9615,0,,,,True
+react-native-camera/react-native-camera,https://github.com/react-native-camera/react-native-camera,7,144,9615,0,,,,False
 ksoichiro/Android-ObservableScrollView,https://github.com/ksoichiro/Android-ObservableScrollView,8,0,9610,12621,3.0,7.0,0.0,True
 paascloud/paascloud-master,https://github.com/paascloud/paascloud-master,4,0,9547,16332,4.0,5.0,0.0,True
 perwendel/spark,https://github.com/perwendel/spark,11,0,9465,9588,3.0,5.0,0.0,True
@@ -302,7 +302,7 @@ lecho/hellocharts-android,https://github.com/lecho/hellocharts-android,8,14,7370
 datahub-project/datahub,https://github.com/datahub-project/datahub,7,72,7363,74074,8.0,4.0,1.0,True
 koush/AndroidAsync,https://github.com/koush/AndroidAsync,10,0,7350,18086,2.0,29.0,0.0,True
 square/dagger,https://github.com/square/dagger,10,0,7292,8043,3.0,8.0,0.0,True
-itwanger/toBeBetterJavaer,https://github.com/itwanger/toBeBetterJavaer,4,0,7290,0,,,,True
+itwanger/toBeBetterJavaer,https://github.com/itwanger/toBeBetterJavaer,4,0,7290,0,,,,False
 google/android-classyshark,https://github.com/google/android-classyshark,7,17,7270,8714,2.0,7.0,1.0,True
 Bearded-Hen/Android-Bootstrap,https://github.com/Bearded-Hen/Android-Bootstrap,9,5,7269,10389,3.0,4.0,2.0,True
 pedant/sweet-alert-dialog,https://github.com/pedant/sweet-alert-dialog,8,2,7266,943,1.5,2.0,0.0,True
