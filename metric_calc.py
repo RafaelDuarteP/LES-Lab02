@@ -28,7 +28,7 @@ def onerror(func, path, exc_info):
         raise
 
 
-ck = 'java -jar ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar repo false 0 false output-metrics\\'
+ck = 'java -jar ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar repo false 0 false output-metrics/'
 
 # Mudar para dados-repo-1.csv ou  dados-repo-2.csv
 csv = 'dados-repo-1.csv'
