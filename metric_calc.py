@@ -21,7 +21,6 @@ class CloneProgress(RemoteProgress):
 # correção de erros para deletar pastas
 def onerror(func, path, exc_info):
     import stat
-    # Is the error an access error?
     if not os.access(path, os.W_OK):
         os.chmod(path, stat.S_IWUSR)
         func(path)
@@ -58,7 +57,7 @@ for i, row in df.iterrows():
             metrics = pd.read_csv('output-metrics/class.csv')
             df.loc[i, 'loc'] = metrics['loc'].sum()
             df.loc[i, 'cbo'] = metrics['cbo'].median()
-            df.loc[i, 'dit'] = metrics['dit'].median()
+            df.loc[i, 'dit'] = metrics['dit'].max()
             df.loc[i, 'lcom'] = metrics['lcom'].median()
             df.loc[i, 'visited'] = True
         except Exception as e:
