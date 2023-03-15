@@ -31,7 +31,7 @@ def onerror(func, path, exc_info):
 ck = 'java -jar ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar repo true 0 false output-metrics/'
 
 # Mudar para dados-repo-1.csv ou  dados-repo-2.csv
-csv = 'dados-repo-4.csv'
+csv = 'dados-repo.csv'
 df = pd.read_csv(csv)
 
 # Verifica se tem o dado visited no csv, se não tiver cria com valor false
