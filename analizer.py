@@ -1,10 +1,8 @@
-from typing import Type
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from datetime import datetime
 
-df =  pd.read_csv('dados-repo.csv')
+df = pd.read_csv('dados-repo.csv')
 
 #removendo os dados vazios
 df = df.loc[df['visited'] == True]
@@ -15,6 +13,16 @@ y_axis = ['dit', 'cbo', 'lcom']
 
 for x in x_axis:
     for y in y_axis:
-        sns.pairplot(data=df, y_vars=y, x_vars=x, kind="reg",height=10)
+        print('Relação', x, y)
+        sns.pairplot(data=df, y_vars=y, x_vars=x, kind="reg", height=10)
         plt.show()
-        
+        pd.plotting.scatter_matrix(df[[x, y]], diagonal='kde')
+        plt.show()
+    cols = [x] + y_axis
+    corr = df[cols].corr()
+    print(corr)
+    plt.matshow(corr)
+    plt.xticks(range(len(cols)), cols)
+    plt.yticks(range(len(cols)), cols)
+    plt.colorbar()
+    plt.show()
