@@ -19,7 +19,7 @@ for x in x_axis:
         pd.plotting.scatter_matrix(df[[x, y]], diagonal='kde')
         plt.show()
     cols = [x] + y_axis
-    corr = df[cols].corr()
+    corr = df[cols].corr('spearman')
     print(corr)
     plt.matshow(corr)
     plt.xticks(range(len(cols)), cols)
