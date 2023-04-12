@@ -23,6 +23,25 @@ query ($after: String) {
       }
     }
   }
+
+
+  query pullRquestsPorRepositorio {
+    repository(owner: "ReactiveX", name: "RxJava") {
+      pullRequests(first: 100, states: [CLOSED, MERGED]) {
+        nodes {
+          title
+          author {
+            login
+          }
+          state
+          createdAt
+          reviews {
+            totalCount
+          }
+        }
+      }
+    }
+  }
 }
 """
 client = GraphQLClient(url)
